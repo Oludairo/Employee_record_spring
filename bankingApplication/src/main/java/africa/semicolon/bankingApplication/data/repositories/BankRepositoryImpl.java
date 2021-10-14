@@ -10,14 +10,18 @@ public class BankRepositoryImpl implements BankRepository{
 
     @Override
     public Bank save(Bank bank) {
+        Bank foundBank = findByBankId(bank.getId());
+        if (foundBank != null){
+            delete(foundBank);
+        }
         banks.add(bank);
-        return bank;
+        return findByBankId(bank.getId());
     }
 
     @Override
-    public Bank findAccountByBankId(String id) {
+    public Bank findByBankId(String id) {
         for (Bank bank: banks){
-            if (bank.getId().equalsIgnoreCase(id));
+            if (bank.getId().equalsIgnoreCase(id))
             return bank;
         }
         return null;
@@ -31,7 +35,7 @@ public class BankRepositoryImpl implements BankRepository{
 
     @Override
     public void delete(String bankId) {
-        Bank bank = findAccountByBankId(bankId);
+        Bank bank = findByBankId(bankId);
         delete(bank);
     }
 

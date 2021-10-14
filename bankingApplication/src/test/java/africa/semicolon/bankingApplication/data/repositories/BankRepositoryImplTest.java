@@ -32,7 +32,7 @@ class BankRepositoryImplTest {
         Bank bank = new Bank("002");
         bank.setName("GTBank");
         bankRepository.save(bank);
-        Bank foundBank = bankRepository.findAccountByBankId("002");
+        Bank foundBank = bankRepository.findByBankId("002");
         assertEquals(bank, foundBank);
     }
 
@@ -41,11 +41,11 @@ class BankRepositoryImplTest {
         Bank bank = new Bank("002");
         bank.setName("GTBank");
         bankRepository.save(bank);
-        assertNotNull(bankRepository.findAccountByBankId("002"));
+        assertNotNull(bankRepository.findByBankId("002"));
 
         bankRepository.delete(bank);
 
-        assertNull(bankRepository.findAccountByBankId("bank"));
+        assertNull(bankRepository.findByBankId("bank"));
     }
 
     @Test
@@ -53,11 +53,11 @@ class BankRepositoryImplTest {
         Bank bank = new Bank("002");
         bank.setName("GTBank");
         bankRepository.save(bank);
-        assertNotNull(bankRepository.findAccountByBankId("002"));
+        assertNotNull(bankRepository.findByBankId("002"));
 
         bankRepository.delete("002");
 
-        assertNull(bankRepository.findAccountByBankId("002"));
+        assertNull(bankRepository.findByBankId("002"));
     }
 
     @Test

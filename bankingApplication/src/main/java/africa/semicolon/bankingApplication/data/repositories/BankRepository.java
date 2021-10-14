@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface BankRepository {
     Bank save(Bank bank);
-    Bank findAccountByBankId(String id);
+    Bank findByBankId(String id);
     void delete(Bank bank);
     void delete(String bankId);
     List<Bank>findAll();
+
 }
